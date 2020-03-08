@@ -7,7 +7,7 @@ const addToFavMovies = id => dispatch => {
     .getMovieById(id)
     .then(data => {
       console.log(data);
-      dispatch(favMoviesActions.addToFavMoviesSuccess(data));
+      dispatch(favMoviesActions.addToFavMoviesSuccess(data, id));
     })
     .catch(err => dispatch(favMoviesActions.addToFavMoviesError(err)));
 };

@@ -6,11 +6,12 @@ const addToFavMoviesStart = () => {
   };
 };
 
-const addToFavMoviesSuccess = movie => {
+const addToFavMoviesSuccess = (movie, id) => {
   return {
     type: favMoviesTypes.ADD_TO_FAV_MOVIES_SUCCESS,
     payload: {
       movie,
+      id,
     },
   };
 };

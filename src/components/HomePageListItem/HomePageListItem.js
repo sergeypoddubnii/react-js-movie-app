@@ -4,13 +4,18 @@ import { connect } from 'react-redux';
 import routes from '../../routes';
 import addToFavMoviesOperations from '../../redux/favMovies/favMoviesOperations';
 
-const HomePageListItem = ({ title, id, addToFavMovies }) => {
+const HomePageListItem = ({ title, id, addToFavMovies, location }) => {
   return (
     <li>
-      <NavLink to={routes.DETAILS_PAGE}>
+      <NavLink
+        to={{
+          pathname: `${routes.DETAILS_PAGE}/${id}`,
+          state: { from: location },
+        }}
+      >
         <h3>{title}</h3>
-        <button onClick={() => addToFavMovies(id)}>add</button>
       </NavLink>
+      <button onClick={() => addToFavMovies(id)}>add</button>
     </li>
   );
 };

@@ -1,17 +1,61 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import moviesOperations from '../../redux/movies/moviesOperations';
 import moviesSelectors from '../../redux/movies/moviesSelectors';
 import HomePageList from '../../components/HomePageList/HomePageList';
+import HomePageForm from '../../components/HomePageForm/HomePageForm';
 
-const HomePage = ({ getPopularMovies }) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => getPopularMovies(), []);
+const HomePage = ({
+  getPopularMovies,
+  getMovieByQuery,
+  history,
+  location,
+  getPopularMoviesPagination,
+  getMoviesByQueryPagination,
+}) => {
+  const [query, setQuery] = useState(new URLSearchParams(location.search).get('query'));
+  const [pageNumber, setPageNumber] = useState(2);
+
+  const loadMovies = () => {
+    setPageNumber(2);
+    if (query) {
+      getMovieByQuery(query);
+      return;
+    }
+    getPopularMovies();
+  };
+
+  const setSearchQuery = value => {
+    if (!value) {
+      return;
+    }
+    history.push({
+      ...location,
+      search: `query=${value}`,
+    });
+    setQuery(value);
+  };
+
+  const handlerLoadMore = () => {
+    setPageNumber(pageNumber + 1);
+    console.log('query', query);
+    if (query) {
+      getMoviesByQueryPagination(query, pageNumber);
+      return;
+    }
+    getPopularMoviesPagination(pageNumber);
+  };
+
+  useEffect(loadMovies, [query]);
 
   return (
     <>
-      <h2 onClick={getPopularMovies}>home page</h2>
-      <HomePageList />
+      <h2>home page</h2>
+      <HomePageForm setSearchQuery={setSearchQuery} />
+      <HomePageList location={location} />
+      <button type="button" onClick={handlerLoadMore}>
+        load more
+      </button>
     </>
   );
 };
@@ -19,8 +63,14 @@ const HomePage = ({ getPopularMovies }) => {
 const mapDispatchToProps = dispatch => {
   return {
     getPopularMovies: () => dispatch(moviesOperations.getPopularMoviesOperation()),
+    getMovieByQuery: query => dispatch(moviesOperations.getMoviesByQuery(query)),
+    getPopularMoviesPagination: pageNumber =>
+      dispatch(moviesOperations.getPopularMoviesWithPagination(pageNumber)),
+    getMoviesByQueryPagination: (query, pageNumber) =>
+      dispatch(moviesOperations.getMoviesByQueryPagination(query, pageNumber)),
   };
 };
+
 const mapStateToProps = state => {
   return {
     movies: moviesSelectors.getMovies(state),

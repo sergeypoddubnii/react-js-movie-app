@@ -6,10 +6,44 @@ const getPopularMoviesOperation = () => dispatch => {
   api
     .getPopularMovies()
     .then(({ results }) => {
-      console.log(results);
       dispatch(moviesActions.getPopularMoviesSuccess(results));
     })
     .catch(err => moviesActions.getPopularMoviesError(err));
 };
 
-export default { getPopularMoviesOperation };
+const getMoviesByQuery = query => dispatch => {
+  moviesActions.getMoviesByQueryStart();
+  api
+    .getMoviesByQuery(query)
+    .then(({ results }) => {
+      dispatch(moviesActions.getMoviesByQuerySuccess(results));
+    })
+    .catch(err => dispatch(moviesActions.getMoviesByQueryError(err)));
+};
+
+const getPopularMoviesWithPagination = pageNumber => dispatch => {
+  moviesActions.getPopularMoviesWithPaginationStart();
+  api
+    .getPopularMoviesWithPagination(pageNumber)
+    .then(({ results }) => {
+      dispatch(moviesActions.getPopularMoviesWithPaginationSuccess(results));
+    })
+    .catch(err => dispatch(moviesActions.getPopularMoviesWithPaginationError(err)));
+};
+
+const getMoviesByQueryPagination = (query, pageNumber) => dispatch => {
+  moviesActions.getMoviesByQueryPaginationStart();
+  api
+    .getMoviesByQueryWithPagination(query, pageNumber)
+    .then(({ results }) =>
+      dispatch(moviesActions.getMoviesByQueryPaginationSuccess(results)),
+    )
+    .catch(err => dispatch(moviesActions.getMoviesByQueryPaginationError(err)));
+};
+
+export default {
+  getPopularMoviesOperation,
+  getMoviesByQuery,
+  getPopularMoviesWithPagination,
+  getMoviesByQueryPagination,
+};
