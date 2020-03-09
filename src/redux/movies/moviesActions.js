@@ -95,6 +95,31 @@ const getMoviesByQueryPaginationError = err => {
   };
 };
 
+const getAllGenresStart = () => {
+  return {
+    type: moviesTypes.GET_ALL_GENRES_START,
+  };
+};
+
+const getAllGenresSuccess = genres => {
+  console.log('genres', genres);
+  return {
+    type: moviesTypes.GET_ALL_GENRES_SUCCESS,
+    payload: {
+      genres,
+    },
+  };
+};
+
+const getAllGenresError = err => {
+  return {
+    type: moviesTypes.GET_ALL_GENRES_ERROR,
+    payload: {
+      err,
+    },
+  };
+};
+
 export default {
   getPopularMoviesStart,
   getPopularMoviesSuccess,
@@ -108,4 +133,7 @@ export default {
   getMoviesByQueryPaginationStart,
   getMoviesByQueryPaginationSuccess,
   getMoviesByQueryPaginationError,
+  getAllGenresStart,
+  getAllGenresSuccess,
+  getAllGenresError,
 };

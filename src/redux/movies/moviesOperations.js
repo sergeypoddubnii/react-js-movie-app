@@ -41,9 +41,18 @@ const getMoviesByQueryPagination = (query, pageNumber) => dispatch => {
     .catch(err => dispatch(moviesActions.getMoviesByQueryPaginationError(err)));
 };
 
+const getAllGenres = () => dispatch => {
+  moviesActions.getAllGenresStart();
+  api
+    .getGenresMovies()
+    .then(data => dispatch(moviesActions.getAllGenresSuccess(data)))
+    .catch(err => dispatch(moviesActions.getAllGenresError(err)));
+};
+
 export default {
   getPopularMoviesOperation,
   getMoviesByQuery,
   getPopularMoviesWithPagination,
   getMoviesByQueryPagination,
+  getAllGenres,
 };

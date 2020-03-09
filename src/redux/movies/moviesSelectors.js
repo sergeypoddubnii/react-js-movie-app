@@ -1,3 +1,4 @@
-const getMovies = state => state.movies;
+const getMovies = state => state.movies.movies;
+const getGenres = state => state.movies.genres;
 
-export default { getMovies };
+export default { getMovies, getGenres };

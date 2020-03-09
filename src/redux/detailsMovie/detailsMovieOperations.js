@@ -12,4 +12,12 @@ const getMovieById = id => dispatch => {
     .catch(err => dispatch(detailsActions.getMovieByIdError(err)));
 };
 
-export default { getMovieById };
+const getRecommendedMovies = id => dispatch => {
+  dispatch(detailsActions.getRecommendedMoviesStart());
+  api
+    .getRecomendationMoviesById(id)
+    .then(({ results }) => dispatch(detailsActions.getRecommendedMoviesSuccess(results)))
+    .catch(err => dispatch(detailsActions.getRecommendedMoviesError(err)));
+};
+
+export default { getMovieById, getRecommendedMovies };

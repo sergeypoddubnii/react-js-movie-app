@@ -25,4 +25,18 @@ const addToFavMoviesError = err => {
   };
 };
 
-export default { addToFavMoviesStart, addToFavMoviesSuccess, addToFavMoviesError };
+const deleteFavMovie = id => {
+  return {
+    type: favMoviesTypes.REMOVE_FROM_FAV_MOVIES,
+    payload: {
+      id,
+    },
+  };
+};
+
+export default {
+  addToFavMoviesStart,
+  addToFavMoviesSuccess,
+  addToFavMoviesError,
+  deleteFavMovie,
+};

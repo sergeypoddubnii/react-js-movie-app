@@ -1,4 +1,5 @@
 import moviesTypes from './moviesTypes';
+import { combineReducers } from 'redux';
 
 const moviesReducer = (state = [], { type, payload }) => {
   switch (type) {
@@ -13,4 +14,16 @@ const moviesReducer = (state = [], { type, payload }) => {
   }
 };
 
-export default moviesReducer;
+const genresReducer = (state = [], { type, payload }) => {
+  switch (type) {
+    case moviesTypes.GET_ALL_GENRES_SUCCESS:
+      return payload.genres;
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  movies: moviesReducer,
+  genres: genresReducer,
+});

@@ -1,4 +1,5 @@
 import detailsMovieTypes from './detailsMovieTypes';
+import { combineReducers } from 'redux';
 
 const detailsMovieReducer = (state = {}, { type, payload }) => {
   switch (type) {
@@ -9,4 +10,16 @@ const detailsMovieReducer = (state = {}, { type, payload }) => {
   }
 };
 
-export default detailsMovieReducer;
+const recommendedMoviesReducer = (state = [], { type, payload }) => {
+  switch (type) {
+    case detailsMovieTypes.GET_RECOMMENDED_MOVIES_SUCCESS:
+      return payload.movies;
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  detailsMovie: detailsMovieReducer,
+  recommendedMovies: recommendedMoviesReducer,
+});

@@ -15,7 +15,6 @@ const HomePageList = ({ movies, location }) => {
   return (
     <>
       <div>{list}</div>
-      {/* <button type="button">load more</button> */}
     </>
   );
 };

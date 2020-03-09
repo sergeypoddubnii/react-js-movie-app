@@ -12,11 +12,14 @@ const HomePage = ({
   location,
   getPopularMoviesPagination,
   getMoviesByQueryPagination,
+  getAllGenres,
+  genres,
 }) => {
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('query'));
   const [pageNumber, setPageNumber] = useState(2);
 
   const loadMovies = () => {
+    getAllGenres();
     setPageNumber(2);
     if (query) {
       getMovieByQuery(query);
@@ -44,6 +47,7 @@ const HomePage = ({
       return;
     }
     getPopularMoviesPagination(pageNumber);
+    console.log('genres', genres);
   };
 
   useEffect(loadMovies, [query]);
@@ -68,12 +72,14 @@ const mapDispatchToProps = dispatch => {
       dispatch(moviesOperations.getPopularMoviesWithPagination(pageNumber)),
     getMoviesByQueryPagination: (query, pageNumber) =>
       dispatch(moviesOperations.getMoviesByQueryPagination(query, pageNumber)),
+    getAllGenres: () => dispatch(moviesOperations.getAllGenres()),
   };
 };
 
 const mapStateToProps = state => {
   return {
     movies: moviesSelectors.getMovies(state),
+    genres: moviesSelectors.getGenres(state),
   };
 };
 
