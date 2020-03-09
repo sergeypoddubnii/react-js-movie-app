@@ -4,6 +4,7 @@ import moviesOperations from '../../redux/movies/moviesOperations';
 import moviesSelectors from '../../redux/movies/moviesSelectors';
 import HomePageList from '../../components/HomePageList/HomePageList';
 import HomePageForm from '../../components/HomePageForm/HomePageForm';
+import './HomePage.scss';
 
 const HomePage = ({
   getPopularMovies,
@@ -54,7 +55,7 @@ const HomePage = ({
 
   return (
     <>
-      <h2>home page</h2>
+      <h2 className="home__title">home page</h2>
       <HomePageForm setSearchQuery={setSearchQuery} />
       <HomePageList location={location} />
       <button type="button" onClick={handlerLoadMore}>

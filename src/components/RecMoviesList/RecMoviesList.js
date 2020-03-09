@@ -17,6 +17,7 @@ const RecMoviesList = ({ recMovies, location }) => {
       <br />
       <p>recommended</p>
       <ul>{list}</ul>
+      {recMovies.length === 0 && <p>nothing to recommend</p>}
     </>
   );
 };
