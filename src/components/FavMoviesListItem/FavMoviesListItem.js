@@ -5,39 +5,26 @@ import favMovieActions from '../../redux/favMovies/favMoviesActions';
 import routes from '../../routes';
 import './FavMoviesListItem.scss';
 
-const FavMoviesListItem = ({
-  title,
-  id,
-  location,
-  removeFavMovie,
-  releaseDate,
-  overview,
-  poster,
-}) => {
+const FavMoviesListItem = ({ title, id, location, removeFavMovie, poster }) => {
   return (
-    <>
-      <li className="favMovies__item">
+    <li className="favMovies__item">
+      <NavLink
+        to={{
+          pathname: `${routes.DETAILS_PAGE}/${id}`,
+          state: { from: location },
+        }}
+      >
         <img
           src={`https://image.tmdb.org/t/p/w200${poster}`}
           alt={title}
           className="favMovies__poster"
         />
-        <p className="favMovies__releaseDate">{releaseDate}</p>
-        <NavLink
-          to={{
-            pathname: `${routes.DETAILS_PAGE}/${id}`,
-            state: { from: location },
-          }}
-        >
-          <h3 className="favMovies__title">{title}</h3>
-        </NavLink>
-        <p className="favMovies__overview">{overview}</p>
-      </li>
-
+        <h3 className="favMovies__title">{title}</h3>
+      </NavLink>
       <button type="button" onClick={() => removeFavMovie(id)}>
         delete
       </button>
-    </>
+    </li>
   );
 };
 

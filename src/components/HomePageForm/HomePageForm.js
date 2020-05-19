@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './HomePageForm.scss';
 
 const HomePageForm = ({ setSearchQuery }) => {
   const [value, setValue] = useState('');
@@ -13,14 +14,17 @@ const HomePageForm = ({ setSearchQuery }) => {
   };
 
   return (
-    <form onSubmit={handlerSubmit}>
+    <form onSubmit={handlerSubmit} className="searchForm">
       <input
         type="text"
         placeholder="input movie..."
         onChange={handerChange}
         value={value}
+        className="searchForm__field"
       />
-      <button type="submit">find</button>
+      <button type="submit" className="searchForm__btn">
+        search
+      </button>
     </form>
   );
 };

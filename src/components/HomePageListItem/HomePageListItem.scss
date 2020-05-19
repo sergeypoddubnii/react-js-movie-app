@@ -1,0 +1,25 @@
+.gallery-item {
+  text-align: center;
+  .home-gallery__title {
+    font-size: 14px;
+  }
+  .gallery-item__container {
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    .gallery-item__img {
+    }
+
+    .gallery-item__overlay {
+      z-index: 100;
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import favMoviesSelectors from '../../redux/favMovies/favMoviesSelectors';
 import FavMoviesListItem from '../FavMoviesListItem/FavMoviesListItem';
+import './FavMoviesPageList.scss';
 
 const FavMoviesPageList = ({ favMovies, location }) => {
   const favMoviesList = favMovies.map(favMovie => {
@@ -11,13 +12,11 @@ const FavMoviesPageList = ({ favMovies, location }) => {
         key={favMovie.id}
         id={favMovie.id}
         title={favMovie.title}
-        releaseDate={favMovie.release_date}
-        overview={favMovie.overview}
         poster={favMovie.poster_path}
       />
     );
   });
-  return <ul className="favMovies__list">{favMoviesList}</ul>;
+  return <ul className="favMovies-gallery">{favMoviesList}</ul>;
 };
 
 const mapStateToProps = state => {

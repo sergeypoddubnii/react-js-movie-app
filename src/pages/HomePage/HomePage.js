@@ -4,6 +4,7 @@ import moviesOperations from '../../redux/movies/moviesOperations';
 import moviesSelectors from '../../redux/movies/moviesSelectors';
 import HomePageList from '../../components/HomePageList/HomePageList';
 import HomePageForm from '../../components/HomePageForm/HomePageForm';
+import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 import './HomePage.scss';
 
 const HomePage = ({
@@ -54,14 +55,14 @@ const HomePage = ({
   useEffect(loadMovies, [query]);
 
   return (
-    <>
-      <h2 className="home__title">home page</h2>
+    <div className="homePage">
       <HomePageForm setSearchQuery={setSearchQuery} />
       <HomePageList location={location} />
-      <button type="button" onClick={handlerLoadMore}>
+      {/* <button type="button" className="loadMore__btn" onClick={handlerLoadMore}>
         load more
-      </button>
-    </>
+      </button> */}
+      <LoadMoreBtn handlerLoadMore={handlerLoadMore} />
+    </div>
   );
 };
 
