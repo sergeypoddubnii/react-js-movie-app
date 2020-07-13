@@ -1,23 +1,17 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import detailsMovieSelectors from '../../redux/detailsMovie/detailsMovieSelectors';
 import detailsMovieOperations from '../../redux/detailsMovie/detailsMovieOperations';
 import RecMoviesList from '../../components/RecMoviesList/RecMoviesList';
 
-const DetailsPage = ({
-  movie,
-  getMovieById,
-  getRecommendedMovies,
-  match,
-  location,
-  history,
-}) => {
-  const loadMovie = () => {
-    getMovieById(match.params.movieId);
-    getRecommendedMovies(match.params.movieId);
-  };
+const DetailsPage = ({ match, location, history }) => {
+  const dispatch = useDispatch();
+  const movie = useSelector(detailsMovieSelectors.getDetailsMovies);
 
-  useEffect(loadMovie, [match.params.movieId]);
+  const loadMovie = () => {
+    dispatch(detailsMovieOperations.getMovieById(match.params.movieId));
+    dispatch(detailsMovieOperations.getRecommendedMovies(match.params.movieId));
+  };
 
   const handlerGoBack = () => {
     if (location.state && location.state.from) {
@@ -26,6 +20,8 @@ const DetailsPage = ({
     }
     history.push('/home');
   };
+
+  useEffect(loadMovie, [match.params.movieId]);
 
   return (
     <>
@@ -39,17 +35,4 @@ const DetailsPage = ({
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getMovieById: id => dispatch(detailsMovieOperations.getMovieById(id)),
-    getRecommendedMovies: id => dispatch(detailsMovieOperations.getRecommendedMovies(id)),
-  };
-};
-
-const mapStateToProps = state => {
-  return {
-    movie: detailsMovieSelectors.getDetailsMovies(state),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailsPage);
+export default DetailsPage;
