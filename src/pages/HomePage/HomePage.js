@@ -10,7 +10,6 @@ import './HomePage.scss';
 const HomePage = ({ history, location }) => {
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('query'));
   const [pageNumber, setPageNumber] = useState(2);
-  // const movies = useSelector(moviesSelectors.getMovies);
   const genres = useSelector(moviesSelectors.getGenres);
   const dispatch = useDispatch();
 
