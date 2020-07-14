@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import favMoviesSelectors from '../../redux/favMovies/favMoviesSelectors';
 import FavMoviesListItem from '../FavMoviesListItem/FavMoviesListItem';
 import './FavMoviesPageList.scss';
 
-const FavMoviesPageList = ({ favMovies, location }) => {
+const FavMoviesPageList = ({ location }) => {
+  const favMovies = useSelector(favMoviesSelectors.getFavMovies);
   const favMoviesList = favMovies.map(favMovie => {
     return (
       <FavMoviesListItem
@@ -19,10 +20,4 @@ const FavMoviesPageList = ({ favMovies, location }) => {
   return <ul className="favMovies-gallery">{favMoviesList}</ul>;
 };
 
-const mapStateToProps = state => {
-  return {
-    favMovies: favMoviesSelectors.getFavMovies(state),
-  };
-};
-
-export default connect(mapStateToProps, null)(FavMoviesPageList);
+export default FavMoviesPageList;

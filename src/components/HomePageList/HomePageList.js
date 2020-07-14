@@ -1,11 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import moviesSelectors from '../../redux/movies/moviesSelectors';
 import favMoviesSelectors from '../../redux/favMovies/favMoviesSelectors';
 import HomePageListItem from '../../components/HomePageListItem/HomePageListItem';
 import './HomePageList.scss';
 
-const HomePageList = ({ movies, location, favMovies }) => {
+const HomePageList = ({ location }) => {
+  const favMovies = useSelector(favMoviesSelectors.getFavMovies);
+  const movies = useSelector(moviesSelectors.getMovies);
+
   const list = movies.map(movie => {
     if (favMovies.find(favMovie => favMovie.id === movie.id)) {
       return (
@@ -37,11 +40,4 @@ const HomePageList = ({ movies, location, favMovies }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    movies: moviesSelectors.getMovies(state),
-    favMovies: favMoviesSelectors.getFavMovies(state),
-  };
-};
-
-export default connect(mapStateToProps, null)(HomePageList);
+export default HomePageList;

@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import favMovieActions from '../../redux/favMovies/favMoviesActions';
 import routes from '../../routes';
 import './FavMoviesListItem.scss';
 
-const FavMoviesListItem = ({ title, id, location, removeFavMovie, poster }) => {
+const FavMoviesListItem = ({ title, id, location, poster }) => {
+  const dispatch = useDispatch();
   return (
     <li className="favMovies__item">
       <NavLink
@@ -21,17 +22,11 @@ const FavMoviesListItem = ({ title, id, location, removeFavMovie, poster }) => {
         />
         <h3 className="favMovies__title">{title}</h3>
       </NavLink>
-      <button type="button" onClick={() => removeFavMovie(id)}>
+      <button type="button" onClick={() => dispatch(favMovieActions.deleteFavMovie(id))}>
         delete
       </button>
     </li>
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    removeFavMovie: id => dispatch(favMovieActions.deleteFavMovie(id)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(FavMoviesListItem);
+export default FavMoviesListItem;

@@ -1,9 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import detailsSelectors from '../../redux/detailsMovie/detailsMovieSelectors';
 import RecMoviesListItem from '../RecMoviesListItem/RecMoviesListItem';
 
-const RecMoviesList = ({ recMovies, location }) => {
+const RecMoviesList = ({ location }) => {
+  const recMovies = useSelector(detailsSelectors.getRecommendedMovies);
+
   const list = recMovies.map(recMovie => (
     <RecMoviesListItem
       key={recMovie.id}
@@ -22,14 +24,4 @@ const RecMoviesList = ({ recMovies, location }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    recMovies: detailsSelectors.getRecommendedMovies(state),
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecMoviesList);
+export default RecMoviesList;

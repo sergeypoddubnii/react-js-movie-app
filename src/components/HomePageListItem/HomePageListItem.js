@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import routes from '../../routes';
 import addToFavMoviesOperations from '../../redux/favMovies/favMoviesOperations';
 import './HomePageListItem.scss';
 
-const HomePageListItem = ({ title, id, addToFavMovies, location, isFav, poster }) => {
+const HomePageListItem = ({ title, id, location, isFav, poster }) => {
+  const dispatch = useDispatch();
+
   return (
     <li className="gallery-item">
       <NavLink
@@ -22,7 +24,10 @@ const HomePageListItem = ({ title, id, addToFavMovies, location, isFav, poster }
             className="gallery-item__img"
           />
           <div className="gallery-item__overlay">
-            <button type="button" onClick={() => addToFavMovies(id)}>
+            <button
+              type="button"
+              onClick={() => dispatch(addToFavMoviesOperations.addToFavMovies(id))}
+            >
               add
             </button>
           </div>
@@ -35,10 +40,4 @@ const HomePageListItem = ({ title, id, addToFavMovies, location, isFav, poster }
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addToFavMovies: id => dispatch(addToFavMoviesOperations.addToFavMovies(id)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(HomePageListItem);
+export default HomePageListItem;
