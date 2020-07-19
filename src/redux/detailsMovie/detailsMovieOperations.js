@@ -6,7 +6,6 @@ const getMovieById = id => dispatch => {
   api
     .getMovieById(id)
     .then(data => {
-      console.log(data);
       dispatch(detailsActions.getMovieByIdSuccess(data));
     })
     .catch(err => dispatch(detailsActions.getMovieByIdError(err)));

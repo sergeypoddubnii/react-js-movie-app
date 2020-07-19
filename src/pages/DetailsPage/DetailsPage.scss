@@ -1,0 +1,41 @@
+.detailsPage {
+  padding: 0 60px;
+  .goBackBtn {
+    margin-bottom: 20px;
+  }
+
+  .watch {
+    display: flex;
+    .description {
+      width: 50%;
+      .description__title {
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+      .description__generalInfo {
+        display: flex;
+        .description__generalInfoItem {
+          margin-right: 10px;
+          margin-bottom: 10px;
+          font-size: 16px;
+        }
+      }
+      .description__overview {
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+      .description__peopleInfo {
+        display: flex;
+        flex-direction: column;
+        .description__peopleInfoItem {
+          font-size: 16px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+    .poster {
+      width: 50%;
+      text-align: center;
+    }
+  }
+}
