@@ -71,7 +71,7 @@ const DetailsPage = ({ match, location, history }) => {
         </div>
         <div className="poster">
           <img
-            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
             alt={movie.title}
           />
         </div>

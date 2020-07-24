@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 
-const RecMoviesListItem = ({ title, id, location }) => {
+const RecMoviesListItem = ({ title, id, location, poster }) => {
   return (
     <NavLink
       to={{
@@ -10,7 +10,7 @@ const RecMoviesListItem = ({ title, id, location }) => {
         state: { from: location },
       }}
     >
-      <h3>{title}</h3>
+      <img src={`https://image.tmdb.org/t/p/w400${poster}`} alt={title} />
     </NavLink>
   );
 };
