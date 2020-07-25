@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import detailsMovieSelectors from '../../redux/detailsMovie/detailsMovieSelectors';
 import detailsMovieOperations from '../../redux/detailsMovie/detailsMovieOperations';
@@ -30,11 +30,14 @@ const DetailsPage = ({ match, location, history }) => {
     return `${hours}h ${restMinutes}min`;
   };
 
-  const genres =
-    movie.genres &&
-    movie.genres.map(genre => {
-      return <span key={genre.id}>{genre.name}, &nbsp;</span>;
-    });
+  const genres = useMemo(
+    () =>
+      movie.genres &&
+      movie.genres.map(genre => {
+        return <span key={genre.id}>{genre.name}, &nbsp;</span>;
+      }),
+    [movie.genres],
+  );
 
   const languages =
     movie.spoken_languages &&

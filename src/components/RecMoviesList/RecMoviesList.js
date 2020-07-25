@@ -1,29 +1,35 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import detailsSelectors from '../../redux/detailsMovie/detailsMovieSelectors';
 import RecMoviesListItem from '../RecMoviesListItem/RecMoviesListItem';
+import '../../../node_modules/slick-carousel/slick/slick.css';
+import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
 const RecMoviesList = ({ location }) => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 200,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+  };
   const recMovies = useSelector(detailsSelectors.getRecommendedMovies);
   console.log('recMovies', recMovies);
-  const list = recMovies.map(recMovie => (
-    <RecMoviesListItem
-      key={recMovie.id}
-      title={recMovie.title}
-      poster={recMovie.backdrop_path}
-      id={recMovie.id}
-      location={location}
-    />
-  ));
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-  };
+  const list = useMemo(
+    () =>
+      recMovies.map(recMovie => (
+        <RecMoviesListItem
+          key={recMovie.id}
+          title={recMovie.title}
+          poster={recMovie.backdrop_path}
+          id={recMovie.id}
+          location={location}
+        />
+      )),
+    [location, recMovies],
+  );
 
   return (
     <>
