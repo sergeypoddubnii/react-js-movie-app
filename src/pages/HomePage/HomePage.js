@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import moviesOperations from '../../redux/movies/moviesOperations';
-import moviesSelectors from '../../redux/movies/moviesSelectors';
+// import moviesSelectors from '../../redux/movies/moviesSelectors';
 import HomePageList from '../../components/HomePageList/HomePageList';
 import HomePageForm from '../../components/HomePageForm/HomePageForm';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
@@ -10,8 +10,7 @@ import './HomePage.scss';
 const HomePage = ({ history, location }) => {
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('query'));
   const [pageNumber, setPageNumber] = useState(2);
-  // const movies = useSelector(moviesSelectors.getMovies);
-  const genres = useSelector(moviesSelectors.getGenres);
+  // const genres = useSelector(moviesSelectors.getGenres);
   const dispatch = useDispatch();
 
   const loadMovies = () => {
@@ -37,13 +36,13 @@ const HomePage = ({ history, location }) => {
 
   const handlerLoadMore = () => {
     setPageNumber(pageNumber + 1);
-    console.log('query', query);
+    // console.log('query', query);
     if (query) {
       dispatch(moviesOperations.getMoviesByQueryPagination(query, pageNumber));
       return;
     }
     dispatch(moviesOperations.getPopularMoviesWithPagination(pageNumber));
-    console.log('genres', genres);
+    // console.log('genres', genres);
   };
 
   useEffect(loadMovies, [query]);

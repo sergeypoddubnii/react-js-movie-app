@@ -1,0 +1,13 @@
+.recMovie {
+  text-align: center;
+
+  .recMovie__title {
+  }
+  .recMovie__img {
+    margin: 0 auto;
+    &:hover {
+      transform: scale(1.02);
+      transition: all ease 0.2s;
+    }
+  }
+}
