@@ -7,35 +7,28 @@ import './HomePageListItem.scss';
 
 const HomePageListItem = ({ title, id, location, isFav, poster }) => {
   const dispatch = useDispatch();
-
   return (
-    <li className="gallery-item">
-      <NavLink
-        to={{
-          pathname: `${routes.DETAILS_PAGE}/${id}`,
-          state: { from: location },
-        }}
-        className="gallery-item__link"
-      >
-        <div className="gallery-item__container">
-          <img
-            src={`https://image.tmdb.org/t/p/w200${poster}`}
-            alt={title}
-            className="gallery-item__img"
-          />
-          <div className="gallery-item__overlay">
-            <button
-              type="button"
-              onClick={() => dispatch(addToFavMoviesOperations.addToFavMovies(id))}
-            >
-              add
-            </button>
-          </div>
-        </div>
-        <h3 className="home-gallery__title">{title}</h3>
-      </NavLink>
+    <li className="galleryItem">
+      <img
+        src={`https://image.tmdb.org/t/p/w200${poster}`}
+        alt={title}
+        className="galleryItem__img"
+      />
+      <div className="galleryItem__wrap">
+        <NavLink
+          to={{
+            pathname: `${routes.DETAILS_PAGE}/${id}`,
+            state: { from: location },
+          }}
+          className="galleryItem__link"
+        >
+          <h3 className="galleryItem__title">{title}</h3>
+        </NavLink>
+        <button onClick={() => dispatch(addToFavMoviesOperations.addToFavMovies(id))}>
+          add
+        </button>
+      </div>
       {isFav && <p>isFav</p>}
-      {/* <button onClick={() => addToFavMovies(id)}>add</button> */}
     </li>
   );
 };
