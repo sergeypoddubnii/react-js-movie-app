@@ -55,6 +55,7 @@ const DetailsPage = ({ match, location, history }) => {
           <h2 className="description__title">{movie.title}</h2>
           <ul className="description__generalInfo">
             <RatingsStars rating={movie.vote_average} />
+            <li className="description__generalInfoItem">{movie.vote_average}</li>
             <li className="description__generalInfoItem">({movie.vote_count})</li>
           </ul>
           <p className="description__overview">{movie.overview}</p>
