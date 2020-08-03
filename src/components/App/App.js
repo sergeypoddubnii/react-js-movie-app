@@ -8,9 +8,11 @@ import Header from '../Header/Header';
 import routes from '../../routes';
 import Preloader from '../../components/Preloader/Preloader';
 import getIsLoading from '../../redux/global/preloader/preloaderSelectors';
+import useNotifications from '../../hooks/useNotifications';
 
 const App = () => {
   const isLoading = useSelector(state => getIsLoading(state));
+  useNotifications();
   return (
     <>
       <BrowserRouter>

@@ -3,8 +3,14 @@
   width: 200px;
   margin: 0 auto;
   margin-bottom: 10px;
+  position: relative;
   .galleryItem__img {
     margin-bottom: 5px;
+  }
+  .galleryItem__isFav {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
   .galleryItem__title {
     font-size: 16px;
@@ -14,5 +20,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    .galleryItem__btn {
+      background-color: transparent;
+      border: none;
+    }
   }
 }
