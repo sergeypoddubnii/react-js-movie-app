@@ -6,6 +6,7 @@ import addToFavMoviesOperations from '../../redux/favMovies/favMoviesOperations'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import notificationsActions from '../../redux/global/notifications/notificationsActions';
+import notificationsConstants from '../../utils/notificationsConstants';
 import './HomePageListItem.scss';
 
 const HomePageListItem = ({ title, id, location, isFav, poster }) => {
@@ -13,8 +14,12 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
 
   const addToFavorite = () => {
     dispatch(addToFavMoviesOperations.addToFavMovies(id));
-    console.log('add');
-    dispatch(notificationsActions.addNotification('added to favorite', 'default'));
+    dispatch(
+      notificationsActions.addNotification(
+        notificationsConstants.message.addedToFavorite,
+        notificationsConstants.variant.success,
+      ),
+    );
   };
 
   return (
@@ -44,6 +49,7 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
           title="add to favorite list"
           className="galleryItem__btn"
           onClick={addToFavorite}
+          disabled={isFav}
         >
           <AddCircleOutlineIcon color="action" fontSize="large" />
         </button>
