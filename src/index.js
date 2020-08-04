@@ -11,7 +11,13 @@ import './stylesheet/main.css';
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
-      <SnackbarProvider>
+      <SnackbarProvider
+        maxSnack={2}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
         <App />
       </SnackbarProvider>
     </PersistGate>
