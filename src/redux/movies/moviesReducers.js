@@ -7,8 +7,13 @@ const moviesReducer = (state = [], { type, payload }) => {
     case moviesTypes.GET_MOVIES_BY_QUERY_SUCCESS:
       return payload.movies;
     case moviesTypes.GET_MOVIES_POPULAR_PAGINATION_SUCCESS:
-    case moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_START:
+    case moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_SUCCESS:
       return [...state, ...payload.movies];
+    case moviesTypes.GET_POPULAR_MOVIES_ERROR:
+    case moviesTypes.GET_MOVIES_POPULAR_PAGINATION_ERROR:
+    case moviesTypes.GET_MOVIES_BY_QUERY_ERROR:
+    case moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_ERROR:
+      return [];
     default:
       return state;
   }
