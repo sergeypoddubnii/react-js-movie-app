@@ -9,8 +9,6 @@ const useNotifications = () => {
   const message = useSelector(notificationsSelectors.getMessageNotification);
   const variant = useSelector(notificationsSelectors.getVariantNotification);
   const dispatch = useDispatch();
-  console.log(message);
-  console.log(variant);
 
   useEffect(() => {
     if (message !== undefined) {

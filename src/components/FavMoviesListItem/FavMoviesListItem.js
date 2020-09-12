@@ -13,7 +13,7 @@ const FavMoviesListItem = ({ title, id, location, poster }) => {
     dispatch(favMovieActions.deleteFavMovie(id));
     dispatch(
       notificationsActions.addNotification(
-        notificationsConstants.message.removedFromFavorite,
+        notificationsConstants.message.removedFromFavorite(title),
         notificationsConstants.variant.error,
       ),
     );

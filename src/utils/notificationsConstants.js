@@ -5,8 +5,12 @@ const notificationConstants = {
     error: 'Error',
   },
   message: {
-    addedToFavorite: 'Successfully added to favorites!',
-    removedFromFavorite: 'Removed from favorites!',
+    addedToFavorite(title) {
+      return `${title} successfully added to favorit movies!`;
+    },
+    removedFromFavorite(title) {
+      return `${title} removed from favorit movies!`;
+    },
   },
 };
 

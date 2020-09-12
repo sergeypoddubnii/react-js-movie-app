@@ -1,5 +1,7 @@
 import moviesTypes from './moviesTypes';
 
+//popular movies
+
 const getPopularMoviesStart = () => {
   return {
     type: moviesTypes.GET_MOVIES_START,
@@ -7,7 +9,6 @@ const getPopularMoviesStart = () => {
 };
 
 const getPopularMoviesSuccess = movies => {
-  console.log('popular', movies);
   return {
     type: moviesTypes.GET_POPULAR_MOVIES_SUCCESS,
     payload: {
@@ -25,6 +26,8 @@ const getPopularMoviesError = err => {
   };
 };
 
+// by query movies
+
 const getMoviesByQueryStart = () => {
   return {
     type: moviesTypes.GET_MOVIES_BY_QUERY_START,
@@ -41,6 +44,7 @@ const getMoviesByQuerySuccess = movies => {
 };
 
 const getMoviesByQueryError = err => {
+  console.log('getMoviesByQueryError');
   return {
     type: moviesTypes.GET_MOVIES_BY_QUERY_ERROR,
     payload: {
@@ -49,6 +53,7 @@ const getMoviesByQueryError = err => {
   };
 };
 
+// popular with pagination movies
 const getPopularMoviesWithPaginationStart = () => {
   return {
     type: moviesTypes.GET_MOVIES_POPULAR_PAGINATION_START,
@@ -56,7 +61,6 @@ const getPopularMoviesWithPaginationStart = () => {
 };
 
 const getPopularMoviesWithPaginationSuccess = movies => {
-  console.log('popularPagination', movies);
   return {
     type: moviesTypes.GET_MOVIES_POPULAR_PAGINATION_SUCCESS,
     payload: {
@@ -71,13 +75,14 @@ const getPopularMoviesWithPaginationError = () => {
   };
 };
 
+// by query with pagination movies
 const getMoviesByQueryPaginationStart = () => {
   return {
     type: moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_START,
   };
 };
+
 const getMoviesByQueryPaginationSuccess = movies => {
-  console.log(`queryPagination`, movies);
   return {
     type: moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_SUCCESS,
     payload: {
@@ -95,6 +100,7 @@ const getMoviesByQueryPaginationError = err => {
   };
 };
 
+// all genres
 const getAllGenresStart = () => {
   return {
     type: moviesTypes.GET_ALL_GENRES_START,
@@ -102,7 +108,6 @@ const getAllGenresStart = () => {
 };
 
 const getAllGenresSuccess = genres => {
-  console.log('genres', genres);
   return {
     type: moviesTypes.GET_ALL_GENRES_SUCCESS,
     payload: {

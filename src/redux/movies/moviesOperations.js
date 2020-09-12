@@ -18,7 +18,9 @@ const getMoviesByQuery = query => dispatch => {
     .then(({ results }) => {
       dispatch(moviesActions.getMoviesByQuerySuccess(results));
     })
-    .catch(err => dispatch(moviesActions.getMoviesByQueryError(err)));
+    .catch(err => {
+      dispatch(moviesActions.getMoviesByQueryError(err));
+    });
 };
 
 const getPopularMoviesWithPagination = pageNumber => dispatch => {

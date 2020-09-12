@@ -16,7 +16,7 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
     dispatch(addToFavMoviesOperations.addToFavMovies(id));
     dispatch(
       notificationsActions.addNotification(
-        notificationsConstants.message.addedToFavorite,
+        notificationsConstants.message.addedToFavorite(title),
         notificationsConstants.variant.success,
       ),
     );
