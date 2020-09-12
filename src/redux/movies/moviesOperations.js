@@ -19,7 +19,6 @@ const getMoviesByQuery = query => dispatch => {
       dispatch(moviesActions.getMoviesByQuerySuccess(results));
     })
     .catch(err => {
-      console.log(err);
       dispatch(moviesActions.getMoviesByQueryError(err));
     });
 };
