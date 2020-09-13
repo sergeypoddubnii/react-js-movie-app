@@ -1,0 +1,15 @@
+.favMovies__item {
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  .favMovies__btnContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .favMovies__btn_remove {
+      outline: none;
+      border: 0;
+      background-color: transparent;
+    }
+  }
+}

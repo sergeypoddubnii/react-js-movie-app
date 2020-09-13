@@ -2,26 +2,39 @@
   margin: 0 auto 20px;
   width: 500px;
   font-size: 16px;
+  display: flex;
   .searchForm__field {
     font-size: 16px;
     width: 400px;
-    border: 1px solid #000;
+    border: 0;
     height: 35px;
     line-height: 35px;
     padding-left: 5px;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #6a6a6a;
   }
   .searchForm__btn {
     font-size: 14px;
-    display: inline-block;
-    height: 35px;
+    display: block;
+    height: 100%;
     line-height: 35px;
     background-color: #3f51b5;
-    border: 1px solid #000;
-    border-radius: 5px;
+    border: 0;
+    border-radius: 3px;
     width: 100px;
     color: #fff;
     text-transform: uppercase;
+  }
+}
+
+@media (max-width: 520px) {
+  .searchForm {
+    width: 300px;
+    .searchForm__field {
+      width: 200px;
+    }
+    .searchForm__btn {
+      font-size: 12px;
+    }
   }
 }

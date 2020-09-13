@@ -4,13 +4,13 @@ import './HomePageForm.scss';
 const HomePageForm = ({ setSearchQuery }) => {
   const [value, setValue] = useState('');
 
-  const handerChange = e => {
-    setValue(e.target.value);
-  };
-
   const handlerSubmit = e => {
     e.preventDefault();
     setSearchQuery(value);
+  };
+
+  const handlerChange = e => {
+    setValue(e.target.value);
   };
 
   return (
@@ -18,7 +18,7 @@ const HomePageForm = ({ setSearchQuery }) => {
       <input
         type="text"
         placeholder="input movie..."
-        onChange={handerChange}
+        onChange={handlerChange}
         value={value}
         className="searchForm__field"
       />

@@ -16,6 +16,7 @@ const RecMoviesListItem = ({ title, id, location, poster }) => {
         src={`https://image.tmdb.org/t/p/w200${poster}`}
         alt={title}
         className="recMovie__img"
+        title={title}
       />
     </NavLink>
   );
