@@ -6,10 +6,10 @@ const notificationConstants = {
   },
   message: {
     addedToFavorite(title) {
-      return `${title} successfully added to favorit movies!`;
+      return `${title} successfully added to favorite movies!`;
     },
     removedFromFavorite(title) {
-      return `${title} removed from favorit movies!`;
+      return `${title} removed from favorite movies!`;
     },
   },
 };
