@@ -1,5 +1,6 @@
 import React from 'react';
 import FavMoviesList from '../../components/FavMoviesPageList/FavMoviesPageList';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import './FavMoviesPage.scss';
 
 const FavMoviesPage = ({ location }) => {
@@ -9,6 +10,10 @@ const FavMoviesPage = ({ location }) => {
       <FavMoviesList location={location} />
     </div>
   );
+};
+
+FavMoviesList.propTypes = {
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default FavMoviesPage;

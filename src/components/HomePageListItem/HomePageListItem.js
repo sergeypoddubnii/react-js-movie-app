@@ -7,6 +7,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import notificationsActions from '../../redux/global/notifications/notificationsActions';
 import notificationsConstants from '../../utils/notificationsConstants';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 import './HomePageListItem.scss';
 
 const HomePageListItem = ({ title, id, location, isFav, poster }) => {
@@ -56,6 +58,14 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
       </div>
     </li>
   );
+};
+
+HomePageListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  isFav: PropTypes.bool.isRequired,
+  poster: PropTypes.string.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default HomePageListItem;

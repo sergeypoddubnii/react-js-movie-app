@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './HomePageForm.scss';
 
 const HomePageForm = ({ setSearchQuery }) => {
@@ -27,6 +28,10 @@ const HomePageForm = ({ setSearchQuery }) => {
       </button>
     </form>
   );
+};
+
+HomePageForm.propTypes = {
+  setSearchQuery: PropTypes.func.isRequired,
 };
 
 export default HomePageForm;

@@ -5,6 +5,7 @@ import moviesSelectors from '../../redux/movies/moviesSelectors';
 import HomePageList from '../../components/HomePageList/HomePageList';
 import HomePageForm from '../../components/HomePageForm/HomePageForm';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import './HomePage.scss';
 
 const HomePage = ({ history, location }) => {
@@ -52,6 +53,11 @@ const HomePage = ({ history, location }) => {
       {movies.length !== 0 ? <LoadMoreBtn handlerLoadMore={handlerLoadMore} /> : null}
     </div>
   );
+};
+
+HomePage.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default HomePage;

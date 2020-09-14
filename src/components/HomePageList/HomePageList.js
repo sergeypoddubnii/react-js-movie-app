@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import moviesSelectors from '../../redux/movies/moviesSelectors';
 import favMoviesSelectors from '../../redux/favMovies/favMoviesSelectors';
 import HomePageListItem from '../../components/HomePageListItem/HomePageListItem';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import './HomePageList.scss';
 
 const HomePageList = ({ location }) => {
@@ -42,6 +43,10 @@ const HomePageList = ({ location }) => {
       <div className="home-gallery">{list}</div>
     </>
   );
+};
+
+HomePageList.propTypes = {
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default HomePageList;

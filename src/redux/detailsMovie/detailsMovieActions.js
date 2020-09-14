@@ -31,7 +31,7 @@ const getRecommendedMoviesStart = () => {
 };
 
 const getRecommendedMoviesSuccess = movies => {
-  console.log('recMovies', movies);
+  // console.log('recMovies', movies);
   return {
     type: detailsMovieTypes.GET_RECOMMENDED_MOVIES_SUCCESS,
     payload: {

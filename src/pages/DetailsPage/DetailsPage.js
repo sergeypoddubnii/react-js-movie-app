@@ -4,6 +4,7 @@ import detailsMovieSelectors from '../../redux/detailsMovie/detailsMovieSelector
 import detailsMovieOperations from '../../redux/detailsMovie/detailsMovieOperations';
 import RecMoviesList from '../../components/RecMoviesList/RecMoviesList';
 import RatingsStars from '../../components/RatingsStarts/RatingsStars';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import './DetailsPage.scss';
 
 const DetailsPage = ({ match, location, history }) => {
@@ -83,6 +84,12 @@ const DetailsPage = ({ match, location, history }) => {
       <RecMoviesList location={location} />
     </div>
   );
+};
+
+DetailsPage.propTypes = {
+  location: ReactRouterPropTypes.location.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default DetailsPage;
