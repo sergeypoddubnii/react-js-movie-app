@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 import './RecMoviesListItem.scss';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 
 const RecMoviesListItem = ({ title, id, location, poster }) => {
   return (
@@ -20,6 +22,13 @@ const RecMoviesListItem = ({ title, id, location, poster }) => {
       />
     </NavLink>
   );
+};
+
+RecMoviesListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
+  poster: PropTypes.string.isRequired,
 };
 
 export default RecMoviesListItem;

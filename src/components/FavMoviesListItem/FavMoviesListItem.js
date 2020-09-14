@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import favMovieActions from '../../redux/favMovies/favMoviesActions';
 import notificationsActions from '../../redux/global/notifications/notificationsActions';
 import notificationsConstants from '../../utils/notificationsConstants';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 import routes from '../../routes';
 import './FavMoviesListItem.scss';
 
@@ -48,6 +50,13 @@ const FavMoviesListItem = ({ title, id, location, poster }) => {
       </div>
     </li>
   );
+};
+
+FavMoviesListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
+  poster: PropTypes.string.isRequired,
 };
 
 export default FavMoviesListItem;

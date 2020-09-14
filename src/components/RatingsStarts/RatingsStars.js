@@ -1,7 +1,8 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
+import PropTypes from 'prop-types';
 
-function RatingsStars({ rating }) {
+const RatingsStars = ({ rating }) => {
   return (
     <StarRatings
       rating={rating}
@@ -12,6 +13,9 @@ function RatingsStars({ rating }) {
       name="rating"
     />
   );
-}
+};
+RatingsStars.propTypes = {
+  rating: PropTypes.number,
+};
 
 export default RatingsStars;
