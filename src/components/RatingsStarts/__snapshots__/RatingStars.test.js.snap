@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render RatingsStarts RatingsStarts component with props 1`] = `
+<StarRatings
+  changeRating={null}
+  gradientPathName=""
+  ignoreInlineStyles={false}
+  name="rating"
+  numberOfStars={10}
+  rating={5}
+  starDimension="20px"
+  starEmptyColor="rgb(203, 211, 227)"
+  starHoverColor="rgb(230, 67, 47)"
+  starRatedColor="orange"
+  starSpacing="0px"
+  svgIconPath="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+  svgIconViewBox="0 0 51 48"
+  typeOfWidget="Star"
+/>
+`;
+
+exports[`should render RatingsStarts RatingsStarts component without props 1`] = `
+<StarRatings
+  changeRating={null}
+  gradientPathName=""
+  ignoreInlineStyles={false}
+  name="rating"
+  numberOfStars={10}
+  rating={0}
+  starDimension="20px"
+  starEmptyColor="rgb(203, 211, 227)"
+  starHoverColor="rgb(230, 67, 47)"
+  starRatedColor="orange"
+  starSpacing="0px"
+  svgIconPath="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+  svgIconViewBox="0 0 51 48"
+  typeOfWidget="Star"
+/>
+`;

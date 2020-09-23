@@ -8,6 +8,7 @@ const Header = () => {
     <header className="header">
       <nav className="nav">
         <ul className="nav__list">
+          <li>hi</li>
           <li className="nav__item">
             <NavLink to={routes.HOME_PAGE} className="nav__link">
               home

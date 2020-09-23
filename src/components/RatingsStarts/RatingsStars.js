@@ -14,6 +14,7 @@ const RatingsStars = ({ rating }) => {
     />
   );
 };
+
 RatingsStars.propTypes = {
   rating: PropTypes.number,
 };

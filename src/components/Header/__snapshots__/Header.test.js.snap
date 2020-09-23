@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render component Header should render component Header 1`] = `
+<header
+  className="header"
+>
+  <nav
+    className="nav"
+  >
+    <ul
+      className="nav__list"
+    >
+      <li>
+        hi
+      </li>
+      <li
+        className="nav__item"
+      >
+        <NavLink
+          className="nav__link"
+          to="/home"
+        >
+          home
+        </NavLink>
+      </li>
+      <li
+        className="nav__item"
+      >
+        <NavLink
+          className="nav__link"
+          to="/favoritemovies"
+        >
+          favorite
+        </NavLink>
+      </li>
+    </ul>
+  </nav>
+</header>
+`;
