@@ -6,7 +6,7 @@ const favMoviesReducer = (state = [], { type, payload }) => {
       const sameMovie = state.find(movie => movie.id === payload.id);
       return sameMovie ? state : [...state, payload.movie];
     case favMoviesTypes.REMOVE_FROM_FAV_MOVIES:
-      return state.filter(favMovie => payload.id !== favMovie.id);
+      return state.filter(favMovie => payload.id !== favMovie.data.id);
     default:
       return state;
   }

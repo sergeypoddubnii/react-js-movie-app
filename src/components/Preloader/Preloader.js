@@ -17,11 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-Preloader.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
-};
-
-function Preloader({ isLoading }) {
+const Preloader = ({ isLoading }) => {
   const classes = useStyles();
   return isLoading ? (
     <Box
@@ -38,6 +34,10 @@ function Preloader({ isLoading }) {
       </div>
     </Box>
   ) : null;
-}
+};
+
+Preloader.propTypes = {
+  isLoading: PropTypes.bool,
+};
 
 export default Preloader;

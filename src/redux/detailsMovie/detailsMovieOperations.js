@@ -3,7 +3,7 @@ import api from '../../services/api';
 
 const getMovieById = id => dispatch => {
   dispatch(detailsActions.getMovieByIdStart());
-  api
+  return api
     .getMovieById(id)
     .then(data => {
       dispatch(detailsActions.getMovieByIdSuccess(data));
@@ -13,9 +13,11 @@ const getMovieById = id => dispatch => {
 
 const getRecommendedMovies = id => dispatch => {
   dispatch(detailsActions.getRecommendedMoviesStart());
-  api
+  return api
     .getRecomendationMoviesById(id)
-    .then(({ results }) => dispatch(detailsActions.getRecommendedMoviesSuccess(results)))
+    .then(({ data }) => {
+      dispatch(detailsActions.getRecommendedMoviesSuccess(data.results));
+    })
     .catch(err => dispatch(detailsActions.getRecommendedMoviesError(err)));
 };
 
