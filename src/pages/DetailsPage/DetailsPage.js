@@ -10,7 +10,6 @@ import './DetailsPage.scss';
 const DetailsPage = ({ match, location, history }) => {
   const dispatch = useDispatch();
   const movie = useSelector(detailsMovieSelectors.getDetailsMovies);
-  console.log('details movie', movie);
 
   const handlerGoBack = () => {
     if (location.state && location.state.from) {
@@ -42,9 +41,9 @@ const DetailsPage = ({ match, location, history }) => {
 
   const languages =
     movie.spoken_languages &&
-    movie.spoken_languages.map(language => {
-      return <span key={language.id}>{language.name}, &nbsp;</span>;
-    });
+    movie.spoken_languages.map(language => (
+      <span key={language.name}>{language.name}, &nbsp;</span>
+    ));
 
   return (
     <div className="detailsPage">
@@ -66,19 +65,12 @@ const DetailsPage = ({ match, location, history }) => {
               Original language: {movie.original_language}
             </li>
             <li className="description__peopleInfoItem">Languages: {languages}</li>
-            <li className="description__peopleInfoItem">
-              Run time: {countRunTime(movie.runtime)}
-            </li>
-            <li className="description__peopleInfoItem">
-              Release date: {movie.release_date}
-            </li>
+            <li className="description__peopleInfoItem">Run time: {countRunTime(movie.runtime)}</li>
+            <li className="description__peopleInfoItem">Release date: {movie.release_date}</li>
           </ul>
         </div>
         <div className="poster">
-          <img
-            src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-            alt={movie.title}
-          />
+          <img src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} alt={movie.title} />
         </div>
       </div>
       <RecMoviesList location={location} />

@@ -16,7 +16,7 @@ const RecMoviesList = ({ location }) => {
     slidesToScroll: 1,
   };
   const recMovies = useSelector(detailsSelectors.getRecommendedMovies);
-
+  console.log(recMovies);
   const list = useMemo(
     () =>
       recMovies.map(recMovie => (

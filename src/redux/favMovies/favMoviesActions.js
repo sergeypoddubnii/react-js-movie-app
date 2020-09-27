@@ -16,12 +16,9 @@ const addToFavMoviesSuccess = (movie, id) => {
   };
 };
 
-const addToFavMoviesError = err => {
+const addToFavMoviesError = () => {
   return {
     type: favMoviesTypes.ADD_TO_FAV_MOVIES_ERROR,
-    payload: {
-      err,
-    },
   };
 };
 

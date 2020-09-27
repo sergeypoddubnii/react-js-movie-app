@@ -5,8 +5,8 @@ const getPopularMoviesOperation = () => dispatch => {
   moviesActions.getPopularMoviesStart();
   api
     .getPopularMovies()
-    .then(({ results }) => {
-      dispatch(moviesActions.getPopularMoviesSuccess(results));
+    .then(({ data }) => {
+      dispatch(moviesActions.getPopularMoviesSuccess(data.results));
     })
     .catch(err => moviesActions.getPopularMoviesError(err));
 };
@@ -15,8 +15,8 @@ const getMoviesByQuery = query => dispatch => {
   moviesActions.getMoviesByQueryStart();
   api
     .getMoviesByQuery(query)
-    .then(({ results }) => {
-      dispatch(moviesActions.getMoviesByQuerySuccess(results));
+    .then(({ data }) => {
+      dispatch(moviesActions.getMoviesByQuerySuccess(data.results));
     })
     .catch(err => {
       dispatch(moviesActions.getMoviesByQueryError(err));
@@ -27,8 +27,8 @@ const getPopularMoviesWithPagination = pageNumber => dispatch => {
   moviesActions.getPopularMoviesWithPaginationStart();
   api
     .getPopularMoviesWithPagination(pageNumber)
-    .then(({ results }) => {
-      dispatch(moviesActions.getPopularMoviesWithPaginationSuccess(results));
+    .then(({ data }) => {
+      dispatch(moviesActions.getPopularMoviesWithPaginationSuccess(data.results));
     })
     .catch(err => dispatch(moviesActions.getPopularMoviesWithPaginationError(err)));
 };
@@ -37,9 +37,7 @@ const getMoviesByQueryPagination = (query, pageNumber) => dispatch => {
   moviesActions.getMoviesByQueryPaginationStart();
   api
     .getMoviesByQueryWithPagination(query, pageNumber)
-    .then(({ results }) =>
-      dispatch(moviesActions.getMoviesByQueryPaginationSuccess(results)),
-    )
+    .then(({ data }) => dispatch(moviesActions.getMoviesByQueryPaginationSuccess(data.results)))
     .catch(err => dispatch(moviesActions.getMoviesByQueryPaginationError(err)));
 };
 
