@@ -1,8 +1,6 @@
 import moviesTypes from '../../movies/moviesTypes';
-// import detailsMovieTypes from '../../detailsMovie/detailsMovieTypes';
-// import faMoviesTypes from '../../detailsMovie/detailsMovieTypes';
 
-const preloaderReducer = (state = { isLoading: false }, { type, payload }) => {
+const preloaderReducer = (state = { isLoading: false }, { type }) => {
   switch (type) {
     case moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_START:
     case moviesTypes.GET_MOVIES_POPULAR_PAGINATION_START:

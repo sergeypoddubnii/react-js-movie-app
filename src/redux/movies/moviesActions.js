@@ -44,7 +44,6 @@ const getMoviesByQuerySuccess = movies => {
 };
 
 const getMoviesByQueryError = err => {
-  console.log('getMoviesByQueryError');
   return {
     type: moviesTypes.GET_MOVIES_BY_QUERY_ERROR,
     payload: {
