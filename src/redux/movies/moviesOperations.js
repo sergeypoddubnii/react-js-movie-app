@@ -3,7 +3,7 @@ import api from '../../services/api';
 
 const getPopularMoviesOperation = () => dispatch => {
   moviesActions.getPopularMoviesStart();
-  api
+  return api
     .getPopularMovies()
     .then(({ data }) => {
       dispatch(moviesActions.getPopularMoviesSuccess(data.results));
