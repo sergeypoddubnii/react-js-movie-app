@@ -122,7 +122,7 @@ describe('favMovies', () => {
       ];
       mock.onGet(api.urlCreator.byId.getMovie(id)).reply(200, { payload });
       store.dispatch(favMoviesOperations.addToFavMovies(id)).then(() => {
-        const actions = store.actions();
+        const actions = store.getActions();
         expect(actions).toEqual(expectedActions);
       });
     });

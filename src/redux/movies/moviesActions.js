@@ -90,12 +90,9 @@ const getMoviesByQueryPaginationSuccess = movies => {
   };
 };
 
-const getMoviesByQueryPaginationError = err => {
+const getMoviesByQueryPaginationError = () => {
   return {
-    type: moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_START,
-    payload: {
-      err,
-    },
+    type: moviesTypes.GET_MOVIES_BY_QUERY_PAGINATION_ERROR,
   };
 };
 
@@ -115,12 +112,9 @@ const getAllGenresSuccess = genres => {
   };
 };
 
-const getAllGenresError = err => {
+const getAllGenresError = () => {
   return {
     type: moviesTypes.GET_ALL_GENRES_ERROR,
-    payload: {
-      err,
-    },
   };
 };
 
