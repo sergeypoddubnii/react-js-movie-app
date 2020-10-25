@@ -1,7 +1,13 @@
 @import './libs/normalize.css';
+@import './fonts.css';
 
 html {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 *,
@@ -39,6 +45,9 @@ li {
 }
 
 a {
+  text-decoration: none;
+}
+a:hover {
   text-decoration: none;
 }
 
