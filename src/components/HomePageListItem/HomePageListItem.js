@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import cutString from '../../helpers/cutString';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 import './HomePageListItem.scss';
 
 const HomePageListItem = ({ title, id, location, isFav, poster }) => {
@@ -72,6 +74,14 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
       </div>
     </li>
   );
+};
+
+HomePageListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  isFav: PropTypes.bool.isRequired,
+  poster: PropTypes.string.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default HomePageListItem;

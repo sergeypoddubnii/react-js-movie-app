@@ -1,44 +1,46 @@
-const getPopularMovies = () => {
-  return fetch(
-    'https://api.themoviedb.org/3/movie/popular?api_key=9c953f3573341a23695016165970ec50&language=en-US&page=1',
-  ).then(res => res.json());
+import axios from 'axios';
+
+const basicUrl = 'https://api.themoviedb.org/3';
+const key = 'api_key=9c953f3573341a23695016165970ec50';
+
+const urlCreator = {
+  popular: {
+    getMovies: () => `${basicUrl}/movie/popular?${key}&language=en-US&page=1`,
+    getMoviesPagination: pageNumber =>
+      `${basicUrl}/movie/popular?${key}&language=en-US&page=${pageNumber}`,
+  },
+  query: {
+    getMovies: query =>
+      `${basicUrl}/search/movie?${key}&query=${query}&language=en-US&page=1&include_adult=false`,
+    getMoviesPagination: (query, pageNumber) =>
+      `${basicUrl}/search/movie?${key}&query=${query}&language=en-US&page=1&include_adult=false&page=${pageNumber}`,
+  },
+  byId: {
+    getMovie: id => `${basicUrl}/movie/${id}?${key}&language=en-US`,
+    getRecomendationMovies: id =>
+      `${basicUrl}/movie/${id}/recommendations?${key}&language=en-US&page=1`,
+  },
+
+  getGenresMoviesUrl: () =>
+    `${basicUrl}/genre/movie/list?${key}&language=en-US`,
 };
 
-const getPopularMoviesWithPagination = pageNumber => {
-  return fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=9c953f3573341a23695016165970ec50&language=en-US&page=${pageNumber}`,
-  ).then(res => res.json());
-};
+const getPopularMovies = () => axios.get(urlCreator.popular.getMovies());
 
-const getMoviesByQuery = query => {
-  return fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=9c953f3573341a23695016165970ec50&query=${query}&language=en-US&page=1&include_adult=false`,
-  ).then(res => res.json());
-};
+const getPopularMoviesWithPagination = pageNumber =>
+  axios.get(urlCreator.popular.getMoviesPagination(pageNumber));
 
-const getMoviesByQueryWithPagination = (query, pageNumber) => {
-  return fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=9c953f3573341a23695016165970ec50&query=${query}&language=en-US&page=1&include_adult=false&page=${pageNumber}`,
-  ).then(res => res.json());
-};
+const getMoviesByQuery = query => axios.get(urlCreator.query.getMovies(query));
 
-const getMovieById = id => {
-  return fetch(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=9c953f3573341a23695016165970ec50&language=en-US`,
-  ).then(res => res.json());
-};
+const getMoviesByQueryWithPagination = (query, pageNumber) =>
+  axios.get(urlCreator.query.getMoviesPagination(query, pageNumber));
 
-const getGenresMovies = () => {
-  return fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?api_key=9c953f3573341a23695016165970ec50&language=en-US`,
-  ).then(res => res.json());
-};
+const getMovieById = id => axios.get(urlCreator.byId.getMovie(id));
 
-const getRecomendationMoviesById = movieId => {
-  return fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=9c953f3573341a23695016165970ec50&language=en-US&page=1`,
-  ).then(res => res.json());
-};
+const getRecomendationMoviesById = id =>
+  axios.get(urlCreator.byId.getRecomendationMovies(id));
+
+const getGenresMovies = () => axios.get(urlCreator.getGenresMoviesUrl());
 
 export default {
   getPopularMovies,
@@ -48,4 +50,5 @@ export default {
   getMovieById,
   getGenresMovies,
   getRecomendationMoviesById,
+  urlCreator,
 };

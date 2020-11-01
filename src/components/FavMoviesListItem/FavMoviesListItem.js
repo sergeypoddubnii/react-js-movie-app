@@ -7,6 +7,8 @@ import notificationsConstants from '../../utils/notificationsConstants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import cutString from '../../helpers/cutString';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 import routes from '../../routes';
 import './FavMoviesListItem.scss';
 
@@ -60,6 +62,13 @@ const FavMoviesListItem = ({ title, id, location, poster }) => {
       </div>
     </li>
   );
+};
+
+FavMoviesListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
+  poster: PropTypes.string.isRequired,
 };
 
 export default FavMoviesListItem;

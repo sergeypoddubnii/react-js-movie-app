@@ -5,10 +5,13 @@ import moviesSelectors from '../../redux/movies/moviesSelectors';
 import HomePageList from '../../components/HomePageList/HomePageList';
 import HomePageForm from '../../components/HomePageForm/HomePageForm';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import './HomePage.scss';
 
 const HomePage = ({ history, location }) => {
-  const [query, setQuery] = useState(new URLSearchParams(location.search).get('query'));
+  const [query, setQuery] = useState(
+    new URLSearchParams(location.search).get('query'),
+  );
   const [pageNumber, setPageNumber] = useState(2);
   const movies = useSelector(moviesSelectors.getMovies);
   const dispatch = useDispatch();
@@ -49,9 +52,16 @@ const HomePage = ({ history, location }) => {
     <div className="homePage">
       <HomePageForm setSearchQuery={setSearchQuery} />
       <HomePageList location={location} />
-      {movies.length !== 0 ? <LoadMoreBtn handlerLoadMore={handlerLoadMore} /> : null}
+      {movies.length !== 0 ? (
+        <LoadMoreBtn handlerLoadMore={handlerLoadMore} />
+      ) : null}
     </div>
   );
+};
+
+HomePage.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default HomePage;

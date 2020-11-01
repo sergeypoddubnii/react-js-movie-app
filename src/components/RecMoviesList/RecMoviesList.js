@@ -5,6 +5,7 @@ import RecMoviesListItem from '../RecMoviesListItem/RecMoviesListItem';
 import '../../../node_modules/slick-carousel/slick/slick.css';
 import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 const RecMoviesList = ({ location }) => {
   const settings = {
@@ -15,8 +16,7 @@ const RecMoviesList = ({ location }) => {
     slidesToScroll: 1,
   };
   const recMovies = useSelector(detailsSelectors.getRecommendedMovies);
-  console.log('recMovies', recMovies);
-
+  console.log(recMovies);
   const list = useMemo(
     () =>
       recMovies.map(recMovie => (
@@ -35,10 +35,13 @@ const RecMoviesList = ({ location }) => {
     <>
       <br />
       <Slider {...settings}>{list}</Slider>
-
       {recMovies.length === 0 && <p>nothing to recommend</p>}
     </>
   );
+};
+
+RecMoviesList.propTypes = {
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 export default RecMoviesList;

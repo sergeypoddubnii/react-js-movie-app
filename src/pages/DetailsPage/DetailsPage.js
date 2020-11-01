@@ -4,12 +4,12 @@ import detailsMovieSelectors from '../../redux/detailsMovie/detailsMovieSelector
 import detailsMovieOperations from '../../redux/detailsMovie/detailsMovieOperations';
 import RecMoviesList from '../../components/RecMoviesList/RecMoviesList';
 import RatingsStars from '../../components/RatingsStarts/RatingsStars';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import './DetailsPage.scss';
 
 const DetailsPage = ({ match, location, history }) => {
   const dispatch = useDispatch();
   const movie = useSelector(detailsMovieSelectors.getDetailsMovies);
-  console.log('details movie', movie);
 
   const handlerGoBack = () => {
     if (location.state && location.state.from) {
@@ -41,9 +41,9 @@ const DetailsPage = ({ match, location, history }) => {
 
   const languages =
     movie.spoken_languages &&
-    movie.spoken_languages.map(language => {
-      return <span key={language.id}>{language.name}, &nbsp;</span>;
-    });
+    movie.spoken_languages.map(language => (
+      <span key={language.name}>{language.name}, &nbsp;</span>
+    ));
 
   return (
     <div className="detailsPage">
@@ -55,8 +55,12 @@ const DetailsPage = ({ match, location, history }) => {
           <h2 className="description__title">{movie.title}</h2>
           <ul className="description__generalInfo">
             <RatingsStars rating={movie.vote_average} />
-            <li className="description__generalInfoItem">{movie.vote_average}</li>
-            <li className="description__generalInfoItem">({movie.vote_count})</li>
+            <li className="description__generalInfoItem">
+              {movie.vote_average}
+            </li>
+            <li className="description__generalInfoItem">
+              ({movie.vote_count})
+            </li>
           </ul>
           <p className="description__overview">{movie.overview}</p>
           <ul className="description__peopleInfo">
@@ -64,7 +68,9 @@ const DetailsPage = ({ match, location, history }) => {
             <li className="description__peopleInfoItem">
               Original language: {movie.original_language}
             </li>
-            <li className="description__peopleInfoItem">Languages: {languages}</li>
+            <li className="description__peopleInfoItem">
+              Languages: {languages}
+            </li>
             <li className="description__peopleInfoItem">
               Run time: {countRunTime(movie.runtime)}
             </li>
@@ -83,6 +89,12 @@ const DetailsPage = ({ match, location, history }) => {
       <RecMoviesList location={location} />
     </div>
   );
+};
+
+DetailsPage.propTypes = {
+  location: ReactRouterPropTypes.location.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default DetailsPage;
