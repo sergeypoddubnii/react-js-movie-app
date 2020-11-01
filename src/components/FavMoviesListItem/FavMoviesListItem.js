@@ -1,11 +1,12 @@
 import React from 'react';
-// import DeleteIcon from '@material-ui/icons/Delete';
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import favMovieActions from '../../redux/favMovies/favMoviesActions';
 import notificationsActions from '../../redux/global/notifications/notificationsActions';
 import notificationsConstants from '../../utils/notificationsConstants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import cutString from '../../helpers/cutString';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
 import routes from '../../routes';
@@ -13,6 +14,7 @@ import './FavMoviesListItem.scss';
 
 const FavMoviesListItem = ({ title, id, location, poster }) => {
   const dispatch = useDispatch();
+
   const removeFromFavorite = () => {
     dispatch(favMovieActions.deleteFavMovie(id));
     dispatch(
@@ -25,11 +27,19 @@ const FavMoviesListItem = ({ title, id, location, poster }) => {
 
   return (
     <li className="favMovies__item">
-      <img
-        src={`https://image.tmdb.org/t/p/w200${poster}`}
-        alt={title}
-        className="favMovies__poster"
-      />
+      <NavLink
+        to={{
+          pathname: `${routes.DETAILS_PAGE}/${id}`,
+          state: { from: location },
+        }}
+      >
+        <img
+          src={`https://image.tmdb.org/t/p/w200${poster}`}
+          alt={title}
+          title={title}
+          className="favMovies__poster"
+        />
+      </NavLink>
       <div className="favMovies__btnContainer">
         <NavLink
           to={{
@@ -37,7 +47,9 @@ const FavMoviesListItem = ({ title, id, location, poster }) => {
             state: { from: location },
           }}
         >
-          <h3 className="favMovies__title">{title}</h3>
+          <h3 className="favMovies__title" title={title}>
+            {cutString(title, 16)}
+          </h3>
         </NavLink>
         <button
           type="button"
@@ -45,7 +57,7 @@ const FavMoviesListItem = ({ title, id, location, poster }) => {
           onClick={removeFromFavorite}
           className="favMovies__btn_remove"
         >
-          <DeleteOutlinedIcon color="secondary" fontSize="large" />
+          <FontAwesomeIcon icon={faTrash} className="favMovies__icon" />
         </button>
       </div>
     </li>

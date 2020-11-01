@@ -3,18 +3,20 @@
   width: 200px;
   margin: 0 auto;
   margin-bottom: 10px;
-  position: relative;
+  &:hover {
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
   .galleryItem__img {
     margin-bottom: 5px;
-  }
-  .galleryItem__isFav {
-    position: absolute;
-    top: 0;
-    right: 0;
   }
   .galleryItem__title {
     font-size: 16px;
     letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #000;
+    display: block;
   }
   .galleryItem__wrap {
     display: flex;
@@ -23,6 +25,22 @@
     .galleryItem__btn {
       background-color: transparent;
       border: none;
+      &:hover {
+        transform: scale(1.15);
+        transition: all 0.2s ease;
+      }
     }
   }
+}
+
+.galleryItem__icon {
+  font-size: 22px;
+}
+
+.galleryItem__icon_add {
+  color: #ffea05;
+}
+
+.galleryItem__icon_hasAdded {
+  color: #04a302;
 }

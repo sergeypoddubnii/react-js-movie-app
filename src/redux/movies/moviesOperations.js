@@ -28,16 +28,22 @@ const getPopularMoviesWithPagination = pageNumber => dispatch => {
   api
     .getPopularMoviesWithPagination(pageNumber)
     .then(({ data }) => {
-      dispatch(moviesActions.getPopularMoviesWithPaginationSuccess(data.results));
+      dispatch(
+        moviesActions.getPopularMoviesWithPaginationSuccess(data.results),
+      );
     })
-    .catch(err => dispatch(moviesActions.getPopularMoviesWithPaginationError(err)));
+    .catch(err =>
+      dispatch(moviesActions.getPopularMoviesWithPaginationError(err)),
+    );
 };
 
 const getMoviesByQueryPagination = (query, pageNumber) => dispatch => {
   moviesActions.getMoviesByQueryPaginationStart();
   api
     .getMoviesByQueryWithPagination(query, pageNumber)
-    .then(({ data }) => dispatch(moviesActions.getMoviesByQueryPaginationSuccess(data.results)))
+    .then(({ data }) =>
+      dispatch(moviesActions.getMoviesByQueryPaginationSuccess(data.results)),
+    )
     .catch(err => dispatch(moviesActions.getMoviesByQueryPaginationError(err)));
 };
 

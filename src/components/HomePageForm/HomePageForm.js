@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './HomePageForm.scss';
 
 const HomePageForm = ({ setSearchQuery }) => {
-  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const btnRef = useRef();
 
   const handlerSubmit = e => {
     e.preventDefault();
-    setSearchQuery(value);
+    setSearchQuery(inputValue);
   };
 
   const handlerChange = e => {
-    setValue(e.target.value);
+    setInputValue(e.target.value);
+    if (e.target.value.trim().length !== 0) {
+      btnRef.current.disabled = false;
+    }
+    if (e.target.value.trim().length === 0) {
+      btnRef.current.disabled = true;
+    }
   };
 
   return (
@@ -20,10 +27,15 @@ const HomePageForm = ({ setSearchQuery }) => {
         type="text"
         placeholder="input movie..."
         onChange={handlerChange}
-        value={value}
+        value={inputValue}
         className="searchForm__field"
       />
-      <button type="submit" className="searchForm__btn">
+      <button
+        type="submit"
+        className="searchForm__btn"
+        ref={btnRef}
+        disabled={true}
+      >
         search
       </button>
     </form>

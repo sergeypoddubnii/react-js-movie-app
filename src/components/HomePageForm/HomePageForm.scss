@@ -1,29 +1,37 @@
 .searchForm {
   margin: 0 auto 20px;
   width: 500px;
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   .searchForm__field {
-    font-size: 16px;
     width: 400px;
     border: 0;
-    height: 35px;
-    line-height: 35px;
-    padding-left: 5px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
     border-radius: 3px;
     color: #6a6a6a;
+    &::placeholder {
+      font-weight: 100;
+    }
+    &:focus {
+      border: 1px solid #3f51b5;
+    }
   }
   .searchForm__btn {
-    font-size: 14px;
-    display: block;
     height: 100%;
-    line-height: 35px;
+    line-height: 40px;
     background-color: #3f51b5;
     border: 0;
     border-radius: 3px;
     width: 100px;
     color: #fff;
     text-transform: uppercase;
+    &:disabled {
+      background-color: #a5a5a5;
+      cursor: auto;
+    }
   }
 }
 

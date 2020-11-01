@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import routes from '../../routes';
 import addToFavMoviesOperations from '../../redux/favMovies/favMoviesOperations';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import notificationsActions from '../../redux/global/notifications/notificationsActions';
 import notificationsConstants from '../../utils/notificationsConstants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import cutString from '../../helpers/cutString';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
 import './HomePageListItem.scss';
@@ -26,17 +28,20 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
 
   return (
     <li className="galleryItem">
-      <img
-        src={`https://image.tmdb.org/t/p/w200${poster}`}
-        alt={title}
-        title={title}
-        className="galleryItem__img"
-      />
-      {isFav ? (
-        <NavLink to={routes.FAVOTIRE_MOVIES_PAGE} className="galleryItem__isFav">
-          <FavoriteBorderIcon color="secondary" fontSize="large" />
-        </NavLink>
-      ) : null}
+      <NavLink
+        to={{
+          pathname: `${routes.DETAILS_PAGE}/${id}`,
+          state: { from: location },
+        }}
+        className="galleryItem__link"
+      >
+        <img
+          src={`https://image.tmdb.org/t/p/w200${poster}`}
+          alt={title}
+          title={title}
+          className="galleryItem__img"
+        />
+      </NavLink>
       <div className="galleryItem__wrap">
         <NavLink
           to={{
@@ -45,16 +50,27 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
           }}
           className="galleryItem__link"
         >
-          <h3 className="galleryItem__title">{title}</h3>
+          <h3 className="galleryItem__title">{cutString(title, 16)}</h3>
         </NavLink>
-        <button
-          title="add to favorite list"
-          className="galleryItem__btn"
-          onClick={addToFavorite}
-          disabled={isFav}
-        >
-          <AddCircleOutlineIcon color="action" fontSize="large" />
-        </button>
+        {!isFav ? (
+          <button
+            title="add to favorite list"
+            className="galleryItem__btn"
+            onClick={addToFavorite}
+            disabled={isFav}
+          >
+            <FontAwesomeIcon
+              icon={faFolderPlus}
+              className="galleryItem__icon galleryItem__icon_add"
+            />
+          </button>
+        ) : (
+          <FontAwesomeIcon
+            icon={faCheck}
+            className="galleryItem__icon galleryItem__icon_hasAdded"
+            title="added to your favorite list"
+          />
+        )}
       </div>
     </li>
   );

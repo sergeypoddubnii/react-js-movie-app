@@ -55,8 +55,12 @@ const DetailsPage = ({ match, location, history }) => {
           <h2 className="description__title">{movie.title}</h2>
           <ul className="description__generalInfo">
             <RatingsStars rating={movie.vote_average} />
-            <li className="description__generalInfoItem">{movie.vote_average}</li>
-            <li className="description__generalInfoItem">({movie.vote_count})</li>
+            <li className="description__generalInfoItem">
+              {movie.vote_average}
+            </li>
+            <li className="description__generalInfoItem">
+              ({movie.vote_count})
+            </li>
           </ul>
           <p className="description__overview">{movie.overview}</p>
           <ul className="description__peopleInfo">
@@ -64,13 +68,22 @@ const DetailsPage = ({ match, location, history }) => {
             <li className="description__peopleInfoItem">
               Original language: {movie.original_language}
             </li>
-            <li className="description__peopleInfoItem">Languages: {languages}</li>
-            <li className="description__peopleInfoItem">Run time: {countRunTime(movie.runtime)}</li>
-            <li className="description__peopleInfoItem">Release date: {movie.release_date}</li>
+            <li className="description__peopleInfoItem">
+              Languages: {languages}
+            </li>
+            <li className="description__peopleInfoItem">
+              Run time: {countRunTime(movie.runtime)}
+            </li>
+            <li className="description__peopleInfoItem">
+              Release date: {movie.release_date}
+            </li>
           </ul>
         </div>
         <div className="poster">
-          <img src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`} alt={movie.title} />
+          <img
+            src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+            alt={movie.title}
+          />
         </div>
       </div>
       <RecMoviesList location={location} />

@@ -21,7 +21,8 @@ const urlCreator = {
       `${basicUrl}/movie/${id}/recommendations?${key}&language=en-US&page=1`,
   },
 
-  getGenresMoviesUrl: () => `${basicUrl}/genre/movie/list?${key}&language=en-US`,
+  getGenresMoviesUrl: () =>
+    `${basicUrl}/genre/movie/list?${key}&language=en-US`,
 };
 
 const getPopularMovies = () => axios.get(urlCreator.popular.getMovies());
@@ -36,7 +37,8 @@ const getMoviesByQueryWithPagination = (query, pageNumber) =>
 
 const getMovieById = id => axios.get(urlCreator.byId.getMovie(id));
 
-const getRecomendationMoviesById = id => axios.get(urlCreator.byId.getRecomendationMovies(id));
+const getRecomendationMoviesById = id =>
+  axios.get(urlCreator.byId.getRecomendationMovies(id));
 
 const getGenresMovies = () => axios.get(urlCreator.getGenresMoviesUrl());
 
