@@ -1,5 +1,5 @@
 import moviesActions from './moviesActions';
-import moviesOperations from './moviesOperations';
+// import moviesOperations from './moviesOperations';
 import moviesReducers from './moviesReducers';
 import moviesSelectors from './moviesSelectors';
 import moviesTypes from './moviesTypes';
@@ -7,7 +7,7 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import configStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import api from '../../services/api';
+// import api from '../../services/api';
 
 const middlewars = [thunk];
 const mockStore = configStore(middlewars);
