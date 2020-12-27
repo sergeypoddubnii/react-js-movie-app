@@ -31,12 +31,7 @@ const HomePageForm = ({ setSearchQuery }) => {
         value={inputValue}
         className="searchForm__field"
       />
-      <button
-        type="submit"
-        className="searchForm__btn"
-        ref={btnRef}
-        disabled={true}
-      >
+      <button type="submit" className="searchForm__btn" ref={btnRef} disabled={true}>
         search
       </button>
     </form>
