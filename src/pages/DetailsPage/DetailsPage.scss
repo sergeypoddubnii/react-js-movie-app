@@ -1,17 +1,11 @@
 .detailsPage {
   padding: 20px 60px 0;
   height: 100vh;
-  color: white;
-  background: linear-gradient(
-    140deg,
-    rgba(16, 121, 238, 0.2) 0%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  background-image: url('../../assets/images/Top 25 Films FINAL.png');
+  background: linear-gradient(140deg, rgba(16, 121, 238, 0.2) 0%, rgba(255, 255, 255, 1) 100%);
 
   .goBackBtn {
     margin-bottom: 20px;
-    border: 1px solid white;
+    border: 1px solid #7b25aa;
     border-radius: 3px;
     padding: 2px 8px;
     background: transparent;
@@ -20,7 +14,7 @@
       transition: all 0.2s ease;
     }
     .goBackIcon {
-      color: white;
+      color: #7b25aa;
       font-size: 20px;
     }
   }
