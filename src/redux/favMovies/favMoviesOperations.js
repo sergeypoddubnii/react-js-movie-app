@@ -5,7 +5,7 @@ const addToFavMovies = id => dispatch => {
   dispatch(favMoviesActions.addToFavMoviesStart());
   return api
     .getMovieById(id)
-    .then(data => {
+    .then(({ data }) => {
       dispatch(favMoviesActions.addToFavMoviesSuccess(data, id));
     })
     .catch(() => {});

@@ -47,7 +47,7 @@ const HomePage = ({ history, location }) => {
   };
 
   useEffect(loadMovies, [query]);
-
+  console.log(query);
   return (
     <div className="homePage">
       <HomePageForm setSearchQuery={setSearchQuery} />

@@ -9,6 +9,7 @@ const HomePageForm = ({ setSearchQuery }) => {
   const handlerSubmit = e => {
     e.preventDefault();
     setSearchQuery(inputValue);
+    setInputValue('');
   };
 
   const handlerChange = e => {

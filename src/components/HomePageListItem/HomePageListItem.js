@@ -6,7 +6,7 @@ import addToFavMoviesOperations from '../../redux/favMovies/favMoviesOperations'
 import notificationsActions from '../../redux/global/notifications/notificationsActions';
 import notificationsConstants from '../../utils/notificationsConstants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import cutString from '../../helpers/cutString';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -25,7 +25,6 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
       ),
     );
   };
-
   return (
     <li className="galleryItem">
       <NavLink
@@ -60,7 +59,7 @@ const HomePageListItem = ({ title, id, location, isFav, poster }) => {
             disabled={isFav}
           >
             <FontAwesomeIcon
-              icon={faFolderPlus}
+              icon={faPlusSquare}
               className="galleryItem__icon galleryItem__icon_add"
             />
           </button>

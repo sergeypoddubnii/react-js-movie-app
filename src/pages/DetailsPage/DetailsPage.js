@@ -5,6 +5,8 @@ import detailsMovieOperations from '../../redux/detailsMovie/detailsMovieOperati
 import RecMoviesList from '../../components/RecMoviesList/RecMoviesList';
 import RatingsStars from '../../components/RatingsStarts/RatingsStars';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBackward } from '@fortawesome/free-solid-svg-icons';
 import './DetailsPage.scss';
 
 const DetailsPage = ({ match, location, history }) => {
@@ -49,8 +51,13 @@ const DetailsPage = ({ match, location, history }) => {
     <div className="detailsPage">
       <div className="watch">
         <div className="description">
-          <button type="button" onClick={handlerGoBack} className="goBackBtn">
-            back
+          <button
+            type="button"
+            onClick={handlerGoBack}
+            className="goBackBtn"
+            title="go back"
+          >
+            <FontAwesomeIcon icon={faBackward} className="goBackIcon" />
           </button>
           <h2 className="description__title">{movie.title}</h2>
           <ul className="description__generalInfo">

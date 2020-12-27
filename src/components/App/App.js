@@ -21,8 +21,14 @@ const App = () => {
           <Preloader isLoading={isLoading} />
           <Switch>
             <Route exact path={routes.HOME_PAGE} component={HomePage} />
-            <Route path={routes.FAVOTIRE_MOVIES_PAGE} component={FavoriteMoviesPage} />
-            <Route path={`${routes.DETAILS_PAGE}/:movieId`} component={DetailsPage} />
+            <Route
+              path={routes.FAVOTIRE_MOVIES_PAGE}
+              component={FavoriteMoviesPage}
+            />
+            <Route
+              path={`${routes.DETAILS_PAGE}/:movieId`}
+              component={DetailsPage}
+            />
             <Redirect to={routes.HOME_PAGE} />
           </Switch>
         </div>
