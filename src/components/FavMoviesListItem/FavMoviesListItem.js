@@ -5,7 +5,7 @@ import favMovieActions from '../../redux/favMovies/favMoviesActions';
 import notificationsActions from '../../redux/global/notifications/notificationsActions';
 import notificationsConstants from '../../utils/notificationsConstants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import cutString from '../../helpers/cutString';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
@@ -57,7 +57,7 @@ const FavMoviesListItem = ({ title, id, location, poster }) => {
           onClick={removeFromFavorite}
           className="favMovies__btn_remove"
         >
-          <FontAwesomeIcon icon={faTrash} className="favMovies__icon" />
+          <FontAwesomeIcon icon={faTrashAlt} className="favMovies__icon" />
         </button>
       </div>
     </li>

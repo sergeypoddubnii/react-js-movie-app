@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import HomePage from '../../pages/HomePage/HomePage';
-import FavoriteMoviesPage from '../../pages/FavMoviesPage/FavMoviesPage';
-import DetailsPage from '../../pages/DetailsPage/DetailsPage';
-import Header from '../Header/Header';
-import routes from '../../routes';
-import Preloader from '../../components/Preloader/Preloader';
-import getIsLoading from '../../redux/global/preloader/preloaderSelectors';
-import useNotifications from '../../hooks/useNotifications';
+import HomePage from './pages/HomePage/HomePage';
+import FavoriteMoviesPage from './pages/FavMoviesPage/FavMoviesPage';
+import DetailsPage from './pages/DetailsPage/DetailsPage';
+import Header from './components/Header/Header';
+import routes from './routes';
+import Preloader from './components/Preloader/Preloader';
+import getIsLoading from './redux/global/preloader/preloaderSelectors';
+import useNotifications from './hooks/useNotifications';
 
 const App = () => {
   const isLoading = useSelector(state => getIsLoading(state));

@@ -10,9 +10,6 @@ exports[`should render component Header should render component Header 1`] = `
     <ul
       className="nav__list"
     >
-      <li>
-        hi
-      </li>
       <li
         className="nav__item"
       >

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
 import { SnackbarProvider } from 'notistack';
-import App from './components/App/App';
+import App from './App';
 
 import './stylesheet/main.css';
 
