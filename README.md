@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ##Tools & Technologies: 
   * JavaScript / ES6 
-  * React(hooks) / redux / redux-thunk / redux-persist
+  * React(hooks)
+  * Redux / redux-thunk / redux-persist
   * CSS/ SCSS / normalize.css
   * jest | Enzyme
   * Webpack 
